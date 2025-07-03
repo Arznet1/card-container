@@ -8,12 +8,20 @@
     font-family: "poppin", "inter", "roboto" sans-serif;
     box-sizing: border-box;
 }
-html{
-    scroll-behavior: smooth;
-}
+
 body{
     background-color: linear-gradient(to right, #583737, #1c1a1a);
     height: 100vh;
+}
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1400px;
+    container-type: inline-size;
 }
 
 .card-container{
@@ -24,10 +32,10 @@ body{
     margin-top: 20px;
    background-color: black;
    height: auto;
+   width: 100%;
 }
 .card{
     width: 350px;
-    height:auto;
     background-color: whitesmoke;
     border-radius: 16px;
     padding: 1rem;
@@ -110,10 +118,10 @@ hr{
     margin-bottom: .5rem;
 }
 .card .list-menu .list-item{
-    animation: imageReveal both;
+    animation: listReveal both;
     animation-timeline: view();
 }
-@keyframes imageReveal {
+@keyframes listReveal {
     from{
         opacity: 0;
         transform: translateY(5px) scale(.5);
@@ -123,4 +131,23 @@ hr{
         transform: translateY(0) scale(1);
     }
     
+}
+
+/* responsive design using @container css */
+
+@container(max-width:960px) {
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        background-color: red;
+    }
+}
+@container(max-width:650px) {
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        background-color: rgb(240, 149, 21);
+    }
 }
